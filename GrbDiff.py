@@ -38,7 +38,7 @@ filetypes = [
                ['Plated Drill File', ['*-PTH.drl', '*.drl', '*.txt', '*.xln', '*.exc', '*.drd', '*.tap', '*.fab.gbr', '*.plated-drill.cnc', 'drl'], '*NPTH*'],
                ['Non-Plated Drill File', ['*NPTH.drl', '*.holes_npth.xln'], ''],
                ['Eco1 Layer', ['*-User?Eco1.*', '*-Eco1?User.*', 'vcut'], ''],
-               ['Outline of PCB', ['*.gm1', '*-Edge?Cuts.*', '*.gko', '*.gm3', '*.dim', '*.gml', '*.fab', '*.out.gbr', '*.board_outline.gbr', '*.boardout.ger', 'ko'], ''],
+               ['Outline of PCB', ['*.gm', '*.gm1', '*-Edge?Cuts.*', '*.gko', '*.gm3', '*.dim', '*.gml', '*.fab', '*.out.gbr', '*.board_outline.gbr', '*.boardout.ger', 'ko'], ''],
             ]
 
 # Color templates for viewing all layers at the same time in GerbV
@@ -121,7 +121,7 @@ settings_object = ConfigParser()
 if not os.path.exists('settings.ini'):
     settings_object['PATHS'] = {'gerbv_path': '', 'grb_file1': '', 'grb_file2': '', 'png_export_path': ''}
     settings_object['TEMPLATES'] = {'diff_color_combobox': 0, 'png_color_combobox': 0, 'gerber_color_combobox': 0}
-    settings_object['OTHER'] = {'png_export_dpi': '300'}
+    settings_object['OTHER'] = {'png_export_dpi': '1200'}
     write_settings_file()
 else:
     # Read File
