@@ -121,7 +121,7 @@ settings_object = ConfigParser()
 if not os.path.exists('settings.ini'):
     settings_object['PATHS'] = {'gerbv_path': '', 'grb_file1': '', 'grb_file2': '', 'png_export_path': ''}
     settings_object['TEMPLATES'] = {'diff_color_combobox': 0, 'png_color_combobox': 0, 'gerber_color_combobox': 0}
-    settings_object['OTHER'] = {'png_export_dpi': '1200'}
+    settings_object['OTHER'] = {'png_export_dpi': '300'}
     write_settings_file()
 else:
     # Read File
