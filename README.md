@@ -1,3 +1,5 @@
+# Forked from "https://github.com/dennevi/GrbDiff". Modified as saw fit.
+
 # GrbDiff - Visualize changes in Gerber files
 
 This is a wrapper for GerbV written in Python intended to make it easier for me to compare two versions of gerber files. I couldn\'t find a free and open-source diff-tool for gerber files so I threw togheter my own.
@@ -8,6 +10,7 @@ The main function of this script is to parse the filenames+extentions of the ger
 
 ## Installation
 
+### STANDARD INSTALL (NO VENV)
 Install [GerbV](http://gerbv.geda-project.org/). Binaries for Windows can be found [here](https://sourceforge.net/projects/gerbv-portable/files/).<br>
 Install [Python3](https://www.python.org/downloads/). I recommend also installing pip and adding Python+pip to your PATH.<br>
 Install these Python plugins (only needed for the png export):
@@ -15,13 +18,17 @@ Install these Python plugins (only needed for the png export):
 - imutils
 - opencv-python
 
-If you\'re unfamiliar with how to install python plugins on your system, try one of these commands in Command Promt in Windows or a Terminal in Linux:
-- pip3 install scikit-image
-- pip install scikit-image
-- python3 -m pip install scikit-image
-- python -m pip install scikit-image
+### VSCODE VENV INSTALL
+1. Get install open VSCODE
+2. Create a virtual environment (in vscode terminal run python -m venv venv) (PYTHON3)
+3. ensure you have the virtual enviornment selected and in the vscode terminal it says (venv)
+4. in the terminal pip install the plugins called out in the INSTALLATION section
 
-Hopefully one of these works and then use that one to install imutils and opencv-python as well. If it doesn\'t work you probably don\'t have pip in your PATH or you don\'t have it installed at all. You\'ll figure it out. If you don\'t mange to get it to work, maybe https://gerbercompare.com/ is a better choice for you.
+### BUILD EXE
+1. To build EXE, pip install pyinstaller
+2. ensure no un-commited changes to GrbDiff.py
+3. Run the command below
+4. pyinstaller --onefile --name "1GrbDiffCompare-$(git rev-parse --short HEAD)-$(git show -s --format=%cd --date=format:%Y%m%d-%H%M%S)" GrbDiff.py
 
 ## Usage
 - Run GrbDiff.py using Python
@@ -55,3 +62,6 @@ This script is written by Albin Dennevi. I\'m not a software developer and I don
 One simple thing that anyone could improve much on is to make better color templates. Have a look at the source, it\'s easy to see how this is done. If you need more/other layers then the layers that I\'ve defined it\'s also easy to add more.
 
 My mail is my firstname + a in a circle + my lastname + dot + com
+
+
+
