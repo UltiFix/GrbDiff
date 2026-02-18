@@ -13,6 +13,7 @@ from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 from tkinter import messagebox
 from zipfile import ZipFile
+from datetime import datetime
 
 # Definition of all layers to be recognized.
 # https://www.pcbway.com/helpcenter/technical_support/Gerber_File_Extention_from_Different_Software.html
@@ -563,6 +564,13 @@ def export_png():
             else:
                 print("Images does not have the same resolution. Not able to compare", img1, "and", img2)
                 export_result = export_result+"Image 1 and 2 has different resolutions.\r\n"
+    
+    # store export_results into txt file before showing pop-up
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    info_file = os.path.join(img_path, f"Info_{timestamp}.txt")
+    with open(info_file, "w", encoding="utf-8") as f:
+        f.write(export_result)
+
     messagebox.showwarning("Info", export_result)
     export_png_status.configure(text="")
 
