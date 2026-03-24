@@ -1,3 +1,4 @@
+# This is fork I modified as saw fit
 # GrbDiff - Visualize changes in Gerber files
 
 This is a wrapper for GerbV written in Python intended to make it easier for me to compare two versions of gerber files. I couldn\'t find a free and open-source diff-tool for gerber files so I threw togheter my own.
