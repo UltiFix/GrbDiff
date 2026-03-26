@@ -6,6 +6,7 @@ import subprocess
 import tempfile
 import time
 import sys
+import numpy as np
 from configparser import ConfigParser
 from tkinter import *
 from tkinter.ttk import *
@@ -525,15 +526,23 @@ def export_png():
             h2, w2, c2 = imageB.shape
             print("Resolution of", img2, "is", w2, "x", h2)
 
-            # convert the images to grayscale
-            grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
-            grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
+            # White in BGR (OpenCV uses BGR):
+            white = np.array([255, 255, 255], dtype=np.uint8)
+
+            # Create mask: 1 = not white, 0 = white
+            maskA = np.any(imageA != white, axis=-1).astype(np.uint8)
+            maskB = np.any(imageB != white, axis=-1).astype(np.uint8)
+            
+            # if np.array_equal(maskA, maskB):
+            #     print("Masks are identical")
+            # else:
+            #     print("Masks differ")
 
             if (h1 == h2 and w1 == w2):
                 try:
                     # compute the Structural Similarity Index (SSIM) between the two
                     # images, ensuring that the difference image is returned
-                    (score, diff) = structural_similarity(grayA, grayB, full=True)
+                    (score, diff) = structural_similarity(maskA, maskB, full=True)
                     diff = (diff * 255).astype("uint8")
                     print("SSIM: {}".format(score))
 
