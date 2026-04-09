@@ -56,3 +56,12 @@ This script is written by Albin Dennevi. I\'m not a software developer and I don
 One simple thing that anyone could improve much on is to make better color templates. Have a look at the source, it\'s easy to see how this is done. If you need more/other layers then the layers that I\'ve defined it\'s also easy to add more.
 
 My mail is my firstname + a in a circle + my lastname + dot + com
+
+
+## Build EXE
+1. Get install open VSCODE
+2. Create a virtual environment (in vscode terminal run python -m venv venv)
+3. ensure you have the virtual enviornment selected and in the vscode terminal it says (venv)
+4. in the terminal run commands
+5. pip install pandas pyinstaller
+6. pyinstaller --onefile --name "GrbDiffCompiled-$(git rev-parse --short HEAD)-$(git show -s --format=%cd --date=format:%Y%m%d-%H%M%S)" GrbDiff.py
